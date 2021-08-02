@@ -1,6 +1,6 @@
 
 # Overview of the LoanPASS SDK for Java #
-The SDK was designed to make LoanPASS APIs to be easily accessible with as few lines of code as possible.
+The SDK was designed to make LoanPASS APIs to be easily accessible with just a few lines of code.
 Here are the highlighted features:
 - Provided both sync and async versions of the LoanPASS APIs
 - Convenient builder(s) to construct API requests safely through code-generated strong typed
