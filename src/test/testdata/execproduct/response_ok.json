@@ -1,0 +1,95 @@
+{
+  "productId": "123",
+  "productName": "some name",
+  "productCode": "some code",
+  "investorName": "some name",
+  "investorCode": "some code",
+  "isPricingEnabled": true,
+  "productFields": [
+    {
+      "fieldId": "field@product-category",
+      "value": {
+        "type": "enum",
+        "enumTypeId": "product-category",
+        "variantId": "bridge"
+      }
+    }
+  ],
+  "calculatedFields": [
+    {
+      "fieldId": "calc@mortgage-type-other-allowed",
+      "value": {
+        "type": "enum",
+        "enumTypeId": "yes-no",
+        "variantId": "yes"
+      }
+    }
+  ],
+  "status": {
+    "type": "ok",
+    "rateSheetEffectiveTimestamp": "2021-04-15T18:06:51Z",
+    "priceScenarios": [
+      {
+        "priceScenarioFields": [
+          {
+            "fieldId": "base-interest-rate",
+            "value": {
+              "type": "number",
+              "value": "0.000"
+            }
+          },
+          {
+            "fieldId": "rate-lock-period",
+            "value": {
+              "type": "duration",
+              "count": "30",
+              "unit": "days"
+            }
+          },
+          {
+            "fieldId": "base-price",
+            "value": {
+              "type": "number",
+              "value": "100"
+            }
+          }
+        ],
+        "calculatedFields": [
+          {
+            "fieldId": "calc@adjusted-price",
+            "value": {
+              "type": "number",
+              "value": "100"
+            }
+          }
+        ],
+        "status": {
+          "type": "approved",
+          "priceAdjustments": [],
+          "marginAdjustments": [],
+          "rateAdjustments": [
+            {
+              "ruleId": "6862",
+              "amount": "7.25",
+              "description": "Some rate."
+            }
+          ],
+          "stipulations": [
+            {
+              "ruleId": "6895",
+              "text": "Rehabilitation budget."
+            },
+            {
+              "ruleId": "6894",
+              "text": "As-Is & ARV appraisal report."
+            },
+            {
+              "ruleId": "6896",
+              "text": "Track record."
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

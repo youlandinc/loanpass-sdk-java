@@ -1,0 +1,32 @@
+{
+  "totals": {
+    "approved": 0,
+    "available": 0,
+    "rejected": 1,
+    "error": 1
+  },
+  "products": [
+    {
+      "productId": "123",
+      "productName": "some name",
+      "productCode": "some code",
+      "investorName": "some name",
+      "investorCode": "some code",
+      "isPricingEnabled": true,
+      "status": {
+        "type": "rejected"
+      }
+    },
+    {
+      "productId": "123",
+      "productName": "some name",
+      "productCode": "some code",
+      "investorName": "some name",
+      "investorCode": "some code",
+      "isPricingEnabled": true,
+      "status": {
+        "type": "error"
+      }
+    }
+  ]
+}

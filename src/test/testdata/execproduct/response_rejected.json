@@ -1,0 +1,93 @@
+{
+  "productId": "123",
+  "productName": "some name",
+  "productCode": "some code",
+  "investorName": "some name",
+  "investorCode": "some code",
+  "isPricingEnabled": true,
+  "productFields": [
+    {
+      "fieldId": "field@product-category",
+      "value": {
+        "type": "enum",
+        "enumTypeId": "product-category",
+        "variantId": "mortgage"
+      }
+    }
+  ],
+  "calculatedFields": [
+    {
+      "fieldId": "calc-field@fha-refi-1st-monthly-mi-months",
+      "value": null
+    },
+    {
+      "fieldId": "calc@channel-allowed",
+      "value": {
+        "type": "enum",
+        "enumTypeId": "yes-no",
+        "variantId": "yes"
+      }
+    },
+    {
+      "fieldId": "calc-field@fha-purchase-1st-monthly-mi",
+      "value": {
+        "type": "number",
+        "value": "0.45"
+      }
+    }
+  ],
+  "status": {
+    "type": "ok",
+    "rateSheetEffectiveTimestamp": "2021-04-06T20:44:03Z",
+    "priceScenarios": [
+      {
+        "priceScenarioFields": [
+          {
+            "fieldId": "base-interest-rate",
+            "value": {
+              "type": "number",
+              "value": "1.75"
+            }
+          },
+          {
+            "fieldId": "rate-lock-period",
+            "value": {
+              "type": "duration",
+              "count": "15",
+              "unit": "days"
+            }
+          },
+          {
+            "fieldId": "base-price",
+            "value": {
+              "type": "number",
+              "value": "97.965"
+            }
+          }
+        ],
+        "calculatedFields": [
+          {
+            "fieldId": "calc@fha-monthly-mi",
+            "value": {
+              "type": "number",
+              "value": "0.00"
+            }
+          }
+        ],
+        "status": {
+          "type": "rejected",
+          "rejections": [
+            {
+              "source": {
+                "type": "rule",
+                "ruleId": "6949"
+              },
+              "message": "Total Loan Amount must be less than $85,000."
+            }
+          ],
+          "errors": []
+        }
+      }
+    ]
+  }
+}

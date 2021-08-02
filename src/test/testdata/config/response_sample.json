@@ -1,0 +1,85 @@
+{
+  "creditApplicationFields": [
+    {
+      "id": "field@loan-purpose",
+      "name": "Loan Purpose",
+      "valueType": {
+        "type": "enum",
+        "enumTypeId": "loan-purpose"
+      },
+      "condition": null
+    },
+    {
+      "id": "field@base-loan-amount",
+      "name": "Base Loan Amount",
+      "valueType": {
+        "type": "number",
+        "minimum": "1",
+        "maximum": null,
+        "precision": 2,
+        "style": "dollar"
+      },
+      "condition": null
+    },
+    {
+      "id": "field@after-repair-value-arv",
+      "name": "After Repair Value (ARV)",
+      "valueType": {
+        "type": "number",
+        "minimum": null,
+        "maximum": null,
+        "precision": 2,
+        "style": "dollar"
+      },
+      "condition": {
+        "type": "parent-field-is-not-blank",
+        "parentFieldId": "field@total-cost-of-project"
+      }
+    },
+    {
+      "id": "field@state",
+      "name": "State",
+      "valueType": {
+        "type": "string",
+        "format": "us-state-code"
+      },
+      "condition": null
+    },
+    {
+      "id": "field@desired-loan-term",
+      "name": "Desired Loan Term",
+      "valueType": {
+        "type": "duration",
+        "minimumDays": null,
+        "maximumDays": null,
+        "minimumMonths": null,
+        "maximumMonths": null
+      },
+      "condition": null
+    }
+  ],
+  "enumerations": [
+    {
+      "id": "loan-purpose",
+      "name": "Loan Purpose",
+      "variants": [
+        {
+          "id": "purchase",
+          "name": "Purchase"
+        },
+        {
+          "id": "refinance",
+          "name": "Refinance"
+        },
+        {
+          "id": "assumption",
+          "name": "Assumption"
+        },
+        {
+          "id": "mortgage-modification",
+          "name": "Mortgage Modification"
+        }
+      ]
+    }
+  ]
+}

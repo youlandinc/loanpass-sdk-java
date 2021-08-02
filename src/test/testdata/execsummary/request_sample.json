@@ -1,0 +1,40 @@
+{
+  "currentTime": "2021-05-03T23:43:59.355Z",
+  "creditApplicationFields": [
+    {
+      "fieldId": "field@loan-purpose",
+      "value":
+      {
+        "type": "enum",
+        "enumTypeId": "loan-purpose",
+        "variantId": "refinance"
+      }
+    },
+    {
+      "fieldId": "field@number-of-units",
+      "value":
+      {
+        "type": "number",
+        "value": 1
+      }
+    },
+    {
+      "fieldId": "field@property-type-other-description",
+      "value":
+      {
+        "type": "string",
+        "value": "Some descriptions"
+      }
+    },
+    {
+      "fieldId": "field@desired-loan-term",
+      "value":
+      {
+        "type": "duration",
+        "count": 1,
+        "unit": "years"
+      }
+    }
+  ]
+
+}

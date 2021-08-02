@@ -1,0 +1,39 @@
+{
+  "productId": "123",
+  "productName": "some name",
+  "productCode": "some code",
+  "investorName": "some name",
+  "investorCode": "some code",
+  "isPricingEnabled": true,
+  "productFields": [
+    {
+      "fieldId": "field@product-category",
+      "value": {
+        "type": "enum",
+        "enumTypeId": "product-category",
+        "variantId": "bridge"
+      }
+    }
+  ],
+  "calculatedFields": [
+    {
+      "fieldId": "calc-field@credit-tier-foreclosure",
+      "value": null
+    }
+  ],
+  "status": {
+    "type": "error",
+    "errors": [
+      {
+        "source": {
+          "type": "rule",
+          "ruleId": "6862"
+        },
+        "kind": {
+          "type": "blank-field",
+          "fieldId": "field@decision-credit-score"
+        }
+      }
+    ]
+  }
+}

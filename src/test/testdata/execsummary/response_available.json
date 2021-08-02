@@ -1,0 +1,25 @@
+{
+  "totals": {
+    "approved": 0,
+    "available": 1,
+    "rejected": 0,
+    "error": 0
+  },
+  "products": [
+    {
+      "productId": "123",
+      "productName": "some name",
+      "productCode": "some code",
+      "investorName": "some name",
+      "investorCode": "some code",
+      "isPricingEnabled": true,
+      "status": {
+        "type": "available",
+        "requiredFieldIds": [
+          "field@number-of-units",
+          "field@decision-credit-score"
+        ]
+      }
+    }
+  ]
+}
