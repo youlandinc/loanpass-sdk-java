@@ -1,13 +1,13 @@
 
-# Overview of the LoanPass SDK for Java #
-The SDK was designed to make LoanPass APIs to be easily accessible with as few lines of code as possible.
+# Overview of the LoanPASS SDK for Java #
+The SDK was designed to make LoanPASS APIs to be easily accessible with as few lines of code as possible.
 Here are the highlighted features:
-- Provided both sync and async versions of the APIs
+- Provided both sync and async versions of the LoanPASS APIs
 - Convenient builder(s) to construct API requests safely through code-generated strong typed
 - Convenient **nested** annotation(s) and converters for safely:
-    - Serialize a POCO to a API request
-    - De-serialize a API response to a POCO
-- Utilities
+    - Serializing a POCO to an API request
+    - De-serializing an API response to a POCO
+- Utilities to:
     - Generate ```enum KnownEnumId``` from get_configuration API
     - Generate ```enum KnownFieldId``` from get_configuration API
     - Generate GraphQL schema from ```enum KnownEnumId```
