@@ -5,8 +5,8 @@ Here are the highlighted features:
 - Provided both sync and async versions of the LoanPASS APIs
 - Convenient builder(s) to construct API requests safely through code-generated strong typed
 - Convenient **nested** annotation(s) and converters for safely:
-    - Serializing a POCO to an API request
-    - De-serializing an API response to a POCO
+    - Serializing a POJO to an API request
+    - De-serializing an API response to a POJO
 - Utilities to:
     - Generate ```enum KnownEnumId``` from get_configuration API
     - Generate ```enum KnownFieldId``` from get_configuration API
