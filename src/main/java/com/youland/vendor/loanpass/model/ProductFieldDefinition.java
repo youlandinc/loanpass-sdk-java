@@ -12,22 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.youland.vendor.loanpass.dto;
-
-import com.youland.vendor.loanpass.model.EnumType;
-import com.youland.vendor.loanpass.model.FieldDefinition;
-import com.youland.vendor.loanpass.model.ProductFieldDefinition;
-
-import java.util.List;
+package com.youland.vendor.loanpass.model;
 
 import lombok.Data;
 
-/**
- * https://api.loanpass.io/v1/swagger#/All%20Endpoints/get_configuration
- */
 @Data
-public class ConfigResponse {
-    private List<FieldDefinition> creditApplicationFields;
-    private List<ProductFieldDefinition> productFields;
-    private List<EnumType> enumerations;
+public class ProductFieldDefinition {
+    private String id;
+    private String name;
+    private AnyOfFieldValueType valueType;
 }

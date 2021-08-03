@@ -58,6 +58,17 @@
       "condition": null
     }
   ],
+  "productFields": [
+    {
+      "id": "field@product-channel",
+      "name": "Product Channel",
+      "valueType": {
+        "type": "enum",
+        "enumTypeId": "channel"
+      }
+    }
+    ],
+
   "enumerations": [
     {
       "id": "loan-purpose",
@@ -78,6 +89,20 @@
         {
           "id": "mortgage-modification",
           "name": "Mortgage Modification"
+        }
+      ]
+    },
+    {
+      "id": "channel",
+      "name": "Channel",
+      "variants": [
+        {
+          "id": "correspondent",
+          "name": "Correspondent"
+        },
+        {
+          "id": "wholesale",
+          "name": "Wholesale"
         }
       ]
     }

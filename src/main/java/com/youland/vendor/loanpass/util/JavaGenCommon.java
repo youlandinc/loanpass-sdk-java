@@ -22,7 +22,6 @@ import com.youland.vendor.loanpass.model.field.FieldValueTypeAsEnum;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Locale;
 
 import lombok.NonNull;
 
@@ -50,17 +49,57 @@ public class JavaGenCommon {
         return String.format("%s%s", FIELD_ID_PREFIX, input);
     }
 
+    private static boolean IsVarNameStartingWithInt(@NonNull String input, String separator) {
+        String[] words = input.split(separator);
+        if (words == null || words.length <= 0)
+            return false;
+        String firstWord = words[0];
+        try {
+            Integer.parseInt(firstWord);
+        } catch (Exception e)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * From LoanPass var name to Java compliant var name
+     * @param input
+     * @return
+     */
     public static String toJavaVarName(@NonNull String input) {
         String output = input
                 .toUpperCase()
                 .replace(NAME_SEPARATOR_NON_JAVA, NAME_SEPARATOR_JAVA);
+
+        //ltang: Handle the special case when name starts with a number, e.g., input = 3-month-bank-statement
+        if (IsVarNameStartingWithInt(output, String.format("%s", NAME_SEPARATOR_JAVA))) {
+            //ltang: Prefix with NAME_SEPARATOR_JAVA to make JAVA compliant
+            output = NAME_SEPARATOR_JAVA + output;
+        }
+
         return output;
     }
 
+    /**
+     * From Java var name to LoanPass
+     * @param input
+     * @return
+     */
     public static String toJavaVarNameReverse(@NonNull String input) {
+        //ltang: Handle the special case when name starts with a NAME_SEPARATOR_JAVA, e.g., input = _3_month_bank_statement
+        int index = input.indexOf(NAME_SEPARATOR_JAVA);
+        if (index == 0)
+            //ltang: Remove NAME_SEPARATOR_JAVA to match with LoanPass
+            input = input.substring(1);
+
+
         String output = input
                 .toLowerCase()
                 .replace(NAME_SEPARATOR_JAVA, NAME_SEPARATOR_NON_JAVA);
+
+
         return output;
     }
 
