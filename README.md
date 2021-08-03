@@ -70,5 +70,18 @@ builder.withTime(Instant.now())
 ExecSummaryRequest request = builder.build();
 ```
 
+# The prerequisite of Using Strong Typed Builder #
+In order to build requests with strong typed, you need to generate the codes 
+containing strong types of "creditApplicationFields" and "enumerations" from the 
+result of get_configuration API. Here are the steps to generate the code:
+
+1. Run the unit test of "LoanPassClientTest.test_getConfiguration" to retrieve the latest configuration.
+2. Replace "test/testdata/config/response_sample.json" with the result above.
+3. Run these 2 unit tests to generate the latest version of strong types above. 
+   1. "EnumType2JavaGenTest"
+   2. "FieldDef2JavaGenTest"
+4. Replace "KnownEnumId.java" and "KnownFieldId.java" with "temp/KnownEnumId.java.codegen"
+and "temp/KnownFieldId.java.codegen" generated from the previous step.
+
 # License Summary #
 Apache 2.0
