@@ -3,7 +3,7 @@
 The SDK was designed to make LoanPASS APIs to be easily accessible with just a few lines of code.
 Here are the highlighted features:
 - Provided both sync and async versions of the LoanPASS APIs
-- Convenient builder(s) to construct API requests safely through code-generated strong typed
+- Convenient builder(s) to construct API requests safely through code-generated strong types
 - Convenient annotation(s) and converters for safely:
     - Serializing a (**nested**) POJO to an API request
     - De-serializing an API response to a (**nested**) POJO
@@ -38,7 +38,7 @@ There are two ways to build a request:
 
 **Preferred option - Strong typed builder**
 
-With this preferred option, the SDK will validate the correctness of IDs and their values.
+With this preferred option, the builder will validate the correctness of IDs and their values.
 
 ```java
 FieldValueMapping.IBuilder fieldBuilder = new FieldValueMappingBuilder();
@@ -58,7 +58,7 @@ ExecSummaryRequest request = builder.build();
 
 **Fallback option - Weak typed builder**
 
-You should only use this fallback option when your *WellKnownFieldId* or *WellKnownEnumId* is out of date. With this option, there is absolutely no checking by the SDK on the correctness of the IDs and their values.
+You should only use this fallback option when your *WellKnownFieldId* or *WellKnownEnumId* is out of date. With this option, there is absolutely no checking by the builder on the correctness of the IDs and their values.
 
 ```java
 FieldValueMapping.IBuilder fieldBuilder = new FieldValueMappingBuilder();
@@ -77,7 +77,7 @@ ExecSummaryRequest request = builder.build();
 ```
 
 # Prerequisites of using strong typed builder #
-In order to build requests with strong typed, you need to generate the codes 
+In order to build requests with strong types, you need to generate the codes 
 containing strong types of *creditApplicationFields* and *enumerations* from the 
 result of get_configuration API. Here are the steps to generate the code:
 
