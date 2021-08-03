@@ -40,14 +40,11 @@ public class GraphQLCodeGen {
 
     public String generateEnum(@NonNull String enumName
             , @NonNull Iterable<String> values) throws IOException {
-        enumName = enumName.toUpperCase().replace(NAME_SEPARATOR_NON_JAVA, NAME_SEPARATOR_JAVA);
+        enumName = JavaGenCommon.toJavaVarName(enumName);
 
         StringBuilder st = new StringBuilder();
         for (String value : values) {
             //GraphQL enum naming convention
-//            value = value
-//                    .toUpperCase()
-//                    .replace(NAME_SEPARATOR_NON_JAVA, NAME_SEPARATOR_JAVA);
             value = JavaGenCommon.toJavaVarName(value);
 
             st.append("\t")
