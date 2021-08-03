@@ -37,7 +37,9 @@ ExecProductResponse prodRes = loanpassClient.postExecProduct(prodReq);
 There are two ways to build a request:
 
 **Preferred option - Strong typed builder**
+
 With this preferred option, the SDK will validate the correctness of IDs and their values.
+
 ```java
 FieldValueMapping.IBuilder fieldBuilder = new FieldValueMappingBuilder();
 List<FieldValueMapping> fields = fieldBuilder
@@ -55,7 +57,9 @@ ExecSummaryRequest request = builder.build();
 ```
 
 **Fallback option - Weak typed builder**
+
 You should only use this fallback option when your WellKnownFieldId or WellKnownEnumId is out of date. With this option, there is absolutely no checking by the SDK on the correctness of the IDs and their values.
+
 ```java
 FieldValueMapping.IBuilder fieldBuilder = new FieldValueMappingBuilder();
 List<FieldValueMapping> fields = fieldBuilder
