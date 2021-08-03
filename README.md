@@ -70,7 +70,7 @@ builder.withTime(Instant.now())
 ExecSummaryRequest request = builder.build();
 ```
 
-# The prerequisite of Using Strong Typed Builder #
+# Prerequisites of Using Strong Typed Builder #
 In order to build requests with strong typed, you need to generate the codes 
 containing strong types of "creditApplicationFields" and "enumerations" from the 
 result of get_configuration API. Here are the steps to generate the code:
