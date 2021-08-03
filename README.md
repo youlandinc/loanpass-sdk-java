@@ -32,7 +32,7 @@ ExecSummaryResponse sumRes = loanpassClient.postExecSummary(sumReq);
 ExecProductResponse prodRes = loanpassClient.postExecProduct(prodReq);
 ```
 
-# How to build a aequest #
+# How to build a request #
 
 There are two ways to build a request:
 
