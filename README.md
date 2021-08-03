@@ -6,7 +6,7 @@ Here are the highlighted features:
 - Convenient builder(s) to construct API requests safely through code-generated strong typed
 - Convenient annotation(s) and converters for safely:
     - Serializing a (**nested**) POJO to an API request
-    - De-serializing an API response to a POJO
+    - De-serializing an API response to a (**nested**) POJO
 - Utilities to:
     - Generate ```enum KnownEnumId``` from get_configuration API
     - Generate ```enum KnownFieldId``` from get_configuration API
@@ -121,6 +121,8 @@ AnnotatedInput source = new AnnotatedInput();
 Obj2FieldValueMapping converter = new Obj2FieldValueMapping(source);
 List<FieldValueMapping> result = converter.convert();
 ```
+
+# From API response to a POJO also in a few line of codes #
 
 # License summary #
 Apache 2.0
