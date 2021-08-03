@@ -1,5 +1,5 @@
 
-# Overview Of The LoanPASS SDK For Java #
+# Overview of the LoanPASS SDK for Java #
 The SDK was designed to make LoanPASS APIs to be easily accessible with just a few lines of code.
 Here are the highlighted features:
 - Provided both sync and async versions of the LoanPASS APIs
@@ -14,7 +14,7 @@ Here are the highlighted features:
 
 If you would like to contribute to this project, please contact [long@youland.com](mailto:long@youland.com)
 
-# Getting Started #
+# Getting started #
 
 ```java
 //Initialize LoanPass client
@@ -32,11 +32,11 @@ ExecSummaryResponse sumRes = loanpassClient.postExecSummary(sumReq);
 ExecProductResponse prodRes = loanpassClient.postExecProduct(prodReq);
 ```
 
-# How To Build A Request #
+# How to build a aequest #
 
 There are two ways to build a request:
 
-**Strong Typed Version**
+**Strong typed version**
 ```java
 FieldValueMapping.IBuilder fieldBuilder = new FieldValueMappingBuilder();
 List<FieldValueMapping> fields = fieldBuilder
@@ -53,7 +53,7 @@ builder.withTime(Instant.now())
 ExecSummaryRequest request = builder.build();
 ```
 
-**Weak Typed Version**
+**Weak typed version**
 ```java
 FieldValueMapping.IBuilder fieldBuilder = new FieldValueMappingBuilder();
 List<FieldValueMapping> fields = fieldBuilder
@@ -70,7 +70,7 @@ builder.withTime(Instant.now())
 ExecSummaryRequest request = builder.build();
 ```
 
-# Prerequisites Of Using Strong Typed Builder #
+# Prerequisites of using strong typed builder #
 In order to build requests with strong typed, you need to generate the codes 
 containing strong types of "creditApplicationFields" and "enumerations" from the 
 result of get_configuration API. Here are the steps to generate the code:
@@ -83,7 +83,7 @@ result of get_configuration API. Here are the steps to generate the code:
 4. Replace "KnownEnumId.java" and "KnownFieldId.java" with "temp/KnownEnumId.java.codegen"
 and "temp/KnownFieldId.java.codegen" generated from the previous step.
 
-# Creating A Request With A Few Line Of Codes #
+# Creating a request with a few line of codes #
 Creating a request using strong typed bulder is good. Still, every field has to be hand drafted and most requests contain a dozen of fields. The better way to create a request in a few line of codes is to annotate your domain object model which is in turn converted into a request. Here is the unit test to demonstrate of use of [Obj2FieldValueMapping](https://github.com/youlandinc/loanpass-sdk-java/blob/main/src/test/java/com/youland/vendor/loanpass/converter/Obj2FieldValueMappingTest.java).
 
 ```java
@@ -122,5 +122,5 @@ Obj2FieldValueMapping converter = new Obj2FieldValueMapping(source);
 List<FieldValueMapping> result = converter.convert();
 ```
 
-# License Summary #
+# License summary #
 Apache 2.0
