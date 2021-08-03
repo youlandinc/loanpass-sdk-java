@@ -58,7 +58,8 @@ ExecSummaryRequest request = builder.build();
 
 **Fallback option - Weak typed builder**
 
-You should only use this fallback option when your *WellKnownFieldId* or *WellKnownEnumId* is out of date. With this option, there is absolutely no checking by the builder on the correctness of the IDs and their values.
+You should only use this fallback option when your *WellKnownFieldId* or *WellKnownEnumId* is out of date.
+With this option, there is absolutely no checking by the builder on the correctness of the IDs and their values.
 
 ```java
 FieldValueMapping.IBuilder fieldBuilder = new FieldValueMappingBuilder();
@@ -77,7 +78,7 @@ ExecSummaryRequest request = builder.build();
 ```
 
 # Prerequisites of using strong typed builder #
-In order to build requests with strong types, you need to generate the codes 
+In order to build requests with strong types, you need to generate codes 
 containing strong types of *creditApplicationFields* and *enumerations* from the 
 result of get_configuration API. Here are the steps to generate the code:
 
@@ -90,7 +91,10 @@ result of get_configuration API. Here are the steps to generate the code:
 and *temp/KnownFieldId.java.codegen* generated from the previous step.
 
 # Creating a request with a few lines of code #
-Creating a request using strong typed bulder is good. Still, every field has to be hand drafted and most requests contain a dozen of fields. The better way to create a request in a few lines of code is to annotate your domain object model which is in turn converted into a request. Here is the unit test to demonstrate of use of [Obj2FieldValueMapping](https://github.com/youlandinc/loanpass-sdk-java/blob/main/src/test/java/com/youland/vendor/loanpass/converter/Obj2FieldValueMappingTest.java).
+Creating a request using strong typed bulder is good. Still, every field has to be hand drafted and most requests 
+contain a dozen of fields. The better way to create a request in a few lines of code is to annotate your domain object 
+model which is in turn converted into a request. Here is the unit test to demonstrate of use 
+of [Obj2FieldValueMapping](https://github.com/youlandinc/loanpass-sdk-java/blob/main/src/test/java/com/youland/vendor/loanpass/converter/Obj2FieldValueMappingTest.java).
 
 ```java
 private enum Loan_Purpose {
