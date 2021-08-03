@@ -6,7 +6,7 @@ Here are the highlighted features:
 - Convenient builder(s) to construct API requests safely through code-generated strong typed
 - Convenient annotation(s) and converters for safely:
     - Serializing a (**nested**) POJO to an API request
-    - De-serializing an API response to a (**nested**) POJO
+    - De-serializing an API response to a POJO
 - Utilities to:
     - Generate ```enum KnownEnumId``` from get_configuration API
     - Generate ```enum KnownFieldId``` from get_configuration API
