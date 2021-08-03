@@ -83,5 +83,44 @@ result of get_configuration API. Here are the steps to generate the code:
 4. Replace "KnownEnumId.java" and "KnownFieldId.java" with "temp/KnownEnumId.java.codegen"
 and "temp/KnownFieldId.java.codegen" generated from the previous step.
 
+# Creating a request with a few line of codes #
+Creating a request using strong typed bulder is good. Still, every field has to be hand drafted and most requests contain a dozen of fields. The better way to create a request in a few line of codes is to annotate your domain object model which is in turn converted into a request. Here is the unit test to demonstrate of use of [Obj2FieldValueMapping](https://github.com/youlandinc/loanpass-sdk-java/blob/main/src/test/java/com/youland/vendor/loanpass/converter/Obj2FieldValueMappingTest.java).
+
+```java
+private enum Loan_Purpose {
+    PURCHASE,
+    REFINANCE,
+    MORTGAGE_MODIFICATION,
+    ASSUMPTION
+}
+
+private class AnnotatedInputNested {
+    @Tag(KnownFieldId.AFTER_REPAIR_VALUE_ARV)
+    private Double afterRepairValue = 88.0;
+}
+
+private class AnnotatedInput {
+    @Tag(KnownFieldId.LOAN_PURPOSE)
+    private Loan_Purpose loanPurpose = Loan_Purpose.REFINANCE;
+
+    @Tag(KnownFieldId.STATE)
+    private String propertyState = "CA";
+
+    @Tag(KnownFieldId.BASE_LOAN_AMOUNT)
+    private Double loanAmount = 99.0;
+
+    @TagDuration(value = KnownFieldId.DESIRED_LOAN_TERM, unit = DurationUnit.MONTHS)
+    private Double loanTerm = 11.0;
+
+    @TagObj
+    private AnnotatedInputNested nestedInput = new AnnotatedInputNested();
+}
+
+//With a few annotations above, the AnnotatedInput source object can be converted to fields of a request 
+AnnotatedInput source = new AnnotatedInput();
+Obj2FieldValueMapping converter = new Obj2FieldValueMapping(source);
+List<FieldValueMapping> result = converter.convert();
+```
+
 # License Summary #
 Apache 2.0
