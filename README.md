@@ -18,7 +18,7 @@ If you would like to contribute to this project, please contact [long@youland.co
 
 ```java
 //Initialize LoanPass client
-String api_key  = "Provide your LoanPass API Key"
+String api_key  = "Bearer API Key"; //Provide your LoanPass API Key
 Settings config = new Settings("https://api.loanpass.io/v1", api_key);
 ILoanPassClient loanpassClient = new LoanPassClient(config);
 
