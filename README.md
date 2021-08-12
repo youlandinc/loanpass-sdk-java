@@ -133,8 +133,8 @@ List<FieldValueMapping> result = converter.convert();
 ```
 
 # From API response to a (nested) POJO in a single line of code #
-A response of product summary or product details API typically contained dozens of fields.
-Mapping these fields into a (nested) POJO can be tedious and error-prone. The better way to
+A typical response of product summary or product details API contains dozens of fields.
+Mapping many of these fields into a (nested) POJO can be tedious and error-prone. The "productively lazy" way to
 do this is through annotations and [FieldValueMapping2Obj](https://github.com/youlandinc/loanpass-sdk-java/blob/main/src/test/java/com/youland/vendor/loanpass/converter/FieldValueMapping2ObjTest.java).
 
 Continuing with the sample code "Creating a request from a (nested) POJO" above,
