@@ -134,7 +134,7 @@ Obj2FieldValueMapping converter = new Obj2FieldValueMapping(source);
 List<FieldValueMapping> result = converter.convert();
 ```
 
-# From API response to a (nested) POJO also in a few lines of code #
+# From API response to a (nested) POJO a single line of code #
 A response of product summary or product details API typically contained dozens of fields.
 Mapping these fields into a (nested) POJO can be tedious and error-prone. The better way to
 do this is through annotations and FieldValueMapping2Obj.
