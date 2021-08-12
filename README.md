@@ -100,9 +100,7 @@ Here is the unit test to demonstrate of use of
 ```java
 private enum Loan_Purpose {
     PURCHASE,
-    REFINANCE,
-    MORTGAGE_MODIFICATION,
-    ASSUMPTION
+    REFINANCE
 }
 
 private class AnnotatedInputNested {
