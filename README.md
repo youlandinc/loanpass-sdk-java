@@ -90,11 +90,12 @@ result of get_configuration API. Here are the steps to generate the code:
 4. Replace *KnownEnumId.java* and *KnownFieldId.java* with *temp/KnownEnumId.java.codegen*
 and *temp/KnownFieldId.java.codegen* generated from the previous step.
 
-# Creating a request with a few lines of code #
-Creating a request using strong typed bulder is good. Still, every field has to be hand drafted and most requests 
-contain a dozen of fields. The better way to create a request in a few lines of code is to annotate your domain object 
-model which is in turn converted into a request. Here is the unit test to demonstrate of use 
-of [Obj2FieldValueMapping](https://github.com/youlandinc/loanpass-sdk-java/blob/main/src/test/java/com/youland/vendor/loanpass/converter/Obj2FieldValueMappingTest.java).
+# Creating a request from a (nested) POJO in a few lines of code #
+Creating a request using strong typed builder is good. Still, every field has to be hand drafted 
+and most requests contain a dozen of fields. The better way to create a request in a few lines 
+of code is to annotate your domain object model which is in turn converted into a request. 
+Here is the unit test to demonstrate of use of 
+[Obj2FieldValueMapping](https://github.com/youlandinc/loanpass-sdk-java/blob/main/src/test/java/com/youland/vendor/loanpass/converter/Obj2FieldValueMappingTest.java).
 
 ```java
 private enum Loan_Purpose {
@@ -126,13 +127,28 @@ private class AnnotatedInput {
     private AnnotatedInputNested nestedInput = new AnnotatedInputNested();
 }
 
-//With a few annotations above, the AnnotatedInput source object can be converted to fields of a request 
+//With a few annotations above, the AnnotatedInput source object can be converted into 
+//fields of a request 
 AnnotatedInput source = new AnnotatedInput();
 Obj2FieldValueMapping converter = new Obj2FieldValueMapping(source);
 List<FieldValueMapping> result = converter.convert();
 ```
 
-# From API response to a POJO also in a few lines of code #
+# From API response to a (nested) POJO also in a few lines of code #
+A response of product summary or product details API typically contained dozens of fields.
+Mapping these fields into a (nested) POJO can be tedious and error-prone. The better way to
+do this is through annotations and FieldValueMapping2Obj.
+
+Continuing with the sample code "Creating a request from a (nested) POJO" above,
+```java
+List<FieldValueMapping> result = converter.convert();
+```
+is to be converted back to the POJO with
+a single line of code.
+
+```java
+AnnotatedInput pojo = FieldValueMapping2Obj.create(result, AnnotatedInput.class);
+```
 
 # License summary #
 Apache 2.0
