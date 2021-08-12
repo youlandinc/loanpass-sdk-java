@@ -14,21 +14,28 @@
 
 package com.youland.vendor.loanpass.converter;
 
+import com.google.common.base.Enums;
 import com.google.common.collect.Maps;
 import com.youland.lib.core.AnnotationTarget;
 import com.youland.lib.core.ReflectionUtil;
 import com.youland.lib.core.TagObj;
+import com.youland.vendor.loanpass.generated.KnownFieldId;
 import com.youland.vendor.loanpass.model.AnyOfFieldValue;
 import com.youland.vendor.loanpass.model.FieldValueMapping;
+import com.youland.vendor.loanpass.model.field.FieldValueAsEnum;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.reflect.FieldUtils;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
 
 import lombok.NonNull;
+import lombok.SneakyThrows;
 
 /**
  * The reverse conversion of {@link Obj2FieldValueMapping}
@@ -72,11 +79,35 @@ public class FieldValueMapping2Obj {
                 , false);
     }
 
+    public static <T extends Enum<T>> T getEnumFromString(Class<T> c, String string) {
+        if( c != null && string != null ) {
+            try {
+                return Enum.valueOf(c, string.trim().toUpperCase());
+            } catch(IllegalArgumentException ex) {
+            }
+        }
+        return null;
+    }
+
+    @SneakyThrows
     private static <T extends FieldValueMapping> void updateTarget(AnnotationTarget target, T field) {
         AnyOfFieldValue fieldValue = field.getValue();
+
         Object value = AnyOfFieldValue.getFieldValue(fieldValue);
+
+        Field targetField = target.getField();
+        Object targetObj = target.getObj();
+
+        if (fieldValue instanceof FieldValueAsEnum) {
+            Type targetFieldType = targetField.getType();
+            var enumValue = Enums.getIfPresent((Class<Enum>) targetFieldType, value.toString());
+            //ltang: Try to convert string to enum
+            if (enumValue.isPresent())
+                value = enumValue.get();
+        }
+
         try {
-            FieldUtils.writeField(target.getField(), target.getObj(), value, true);
+            FieldUtils.writeField(targetField, targetObj, value, true);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

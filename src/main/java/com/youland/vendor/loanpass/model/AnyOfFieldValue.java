@@ -16,12 +16,14 @@ package com.youland.vendor.loanpass.model;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.youland.lib.core.ReflectionUtil;
 import com.youland.vendor.loanpass.model.field.FieldValueAsDuration;
 import com.youland.vendor.loanpass.model.field.FieldValueAsEnum;
 import com.youland.vendor.loanpass.model.field.FieldValueAsNumber;
 import com.youland.vendor.loanpass.model.field.FieldValueAsString;
 import com.youland.vendor.loanpass.model.field.FieldValueOpt;
 import com.youland.vendor.loanpass.serializer.AnyOfFieldValueDeserializer;
+import com.youland.vendor.loanpass.util.JavaGenCommon;
 
 import org.apache.commons.lang3.NotImplementedException;
 
@@ -68,7 +70,8 @@ public abstract class AnyOfFieldValue {
                 break;
             case ENUM:
                 FieldValueAsEnum enumField = (FieldValueAsEnum) field;
-                value = enumField.getVariantId();
+                String variantId = enumField.getVariantId();
+                value = JavaGenCommon.toJavaVarName(variantId);
                 break;
             case DURATION:
                 FieldValueAsDuration duraField = (FieldValueAsDuration) field;

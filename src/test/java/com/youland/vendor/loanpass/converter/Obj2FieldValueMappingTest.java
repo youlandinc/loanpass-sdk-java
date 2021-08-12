@@ -14,6 +14,8 @@
 
 package com.youland.vendor.loanpass.converter;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.youland.lib.core.JsonUtil;
 import com.youland.lib.core.TagObj;
 import com.youland.vendor.loanpass.generated.KnownFieldId;
@@ -27,21 +29,21 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-class Obj2FieldValueMappingTest {
+public class Obj2FieldValueMappingTest {
 
-    private enum Loan_Purpose {
+    public enum Loan_Purpose {
         PURCHASE,
-        REFINANCE,
-        MORTGAGE_MODIFICATION,
-        ASSUMPTION
+        REFINANCE
     }
 
-    private class AnnotatedInputNested {
+    @JsonAutoDetect(fieldVisibility = Visibility.ANY)
+    public static class AnnotatedInputNested {
         @Tag(KnownFieldId.AFTER_REPAIR_VALUE_ARV)
         private Double afterRepairValue = 88.0;
     }
 
-    private class AnnotatedInput {
+    @JsonAutoDetect(fieldVisibility = Visibility.ANY)
+    public static class AnnotatedInput {
         @Tag(KnownFieldId.LOAN_PURPOSE)
         private Loan_Purpose loanPurpose = Loan_Purpose.REFINANCE;
 
@@ -56,6 +58,12 @@ class Obj2FieldValueMappingTest {
 
         @TagObj
         private AnnotatedInputNested nestedInput = new AnnotatedInputNested();
+    }
+
+    public static List<FieldValueMapping> CreateFields(Object source) {
+        var converter = new Obj2FieldValueMapping(source);
+        List<FieldValueMapping> fields = converter.convert();
+        return fields;
     }
 
     @BeforeAll
@@ -79,14 +87,13 @@ class Obj2FieldValueMappingTest {
         //Arrange
         AnnotatedInput source = new AnnotatedInput();
 
-        Obj2FieldValueMapping converter = new Obj2FieldValueMapping(source);
-
         //Action
-        List<FieldValueMapping> result = converter.convert();
+        var result = CreateFields(source);
 
         //Assert
-        Assertions.assertNotNull(result);
-        Assertions.assertFalse(result.isEmpty());
         System.out.println(JsonUtil.stringify(result));
+
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(5, result.size());
     }
 }
