@@ -141,8 +141,7 @@ Continuing with the sample code "Creating a request from a (nested) POJO" above,
 ```java
 List<FieldValueMapping> result = converter.convert();
 ```
-is to be converted back to the POJO with
-a single line of code.
+is to be converted back to the original POJO type of AnnotatedInput in a single line of code.
 
 ```java
 AnnotatedInput pojo = FieldValueMapping2Obj.create(result, AnnotatedInput.class);
