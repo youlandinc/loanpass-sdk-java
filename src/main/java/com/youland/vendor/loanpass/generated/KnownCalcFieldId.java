@@ -37,7 +37,10 @@ public enum KnownCalcFieldId implements ValueObservable<String> {
 
     ADJUSTED_INTEREST_RATE ("calc@adjusted-interest-rate", NUMBER),
     ADJUSTED_PRICE ("calc@adjusted-price", NUMBER),
-    ADJUSTED_RATE_LOCK_PERIOD ("calc@adjusted-rate-lock-period", NUMBER);
+    ADJUSTED_RATE_LOCK_PERIOD ("calc@adjusted-rate-lock-period", NUMBER),
+
+    DSCR("calc@dscr", NUMBER),
+    EST_APR_PERCENT("calc@est-apr-percent", NUMBER);
 
     public static final Map<String, KnownCalcFieldId> VALUE2ENUM
             = ValueObservable.createMapValue2Obj(KnownCalcFieldId.values());

@@ -27,6 +27,7 @@ import com.youland.vendor.loanpass.model.price.PriceScenarioStatusOpt;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.youland.vendor.loanpass.price.IPriceInfo;
 import lombok.Data;
 import lombok.NonNull;
 
@@ -34,7 +35,7 @@ import lombok.NonNull;
  * Mapping fields of {@link PriceScenarioResult}
  */
 @Data
-public class PriceScenarioResultDTO {
+public class PriceScenarioResultDTO implements IPriceInfo {
     private Object tag;
 
     @TagDurationPriceScr(value= KnownPriceScenarioFieldId.RATE_LOCK_PERIOD, unit = DurationUnit.DAYS)
@@ -69,6 +70,21 @@ public class PriceScenarioResultDTO {
 
     @TagCalc(KnownCalcFieldId.ADJUSTED_RATE_LOCK_PERIOD)
     private Double adjustedRateLockPeriod;
+
+    @TagCalc(KnownCalcFieldId.DSCR)
+    private Double dscr;
+
+    @TagCalc(KnownCalcFieldId.EST_APR_PERCENT)
+    private Double estAprPercent;
+
+    @Override
+    public boolean priceEnabled() { return getPrice() != null; }
+
+    @Override
+    public Double getLockPeriod() { return adjustedRateLockPeriod; }
+
+    @Override
+    public Double getPrice() { return adjustedPrice; }
 
     /**
      * TODO ltang: Need a better way to handle non-approved price scenarios

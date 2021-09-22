@@ -14,12 +14,26 @@
 
 package com.youland.vendor.loanpass.model;
 
+import com.youland.vendor.loanpass.price.IPriceInfo;
 import lombok.Data;
 
 @Data
-public class PriceScenarioSummary {
+public class PriceScenarioSummary implements IPriceInfo {
     private Double adjustedRate;
     private DurationValue adjustedRateLockPeriod;
     private Double adjustedPrice;
     private AnyOfPriceScenarioSummaryStatus status;
+
+    @Override
+    public boolean priceEnabled() {
+        return adjustedRateLockPeriod != null && adjustedPrice != null;
+    }
+
+    @Override
+    public Double getLockPeriod() {
+        return adjustedRateLockPeriod != null ? adjustedRateLockPeriod.getCount() : null;
+    }
+
+    @Override
+    public Double getPrice() { return this.adjustedPrice; }
 }
